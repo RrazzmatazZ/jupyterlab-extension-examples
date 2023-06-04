@@ -29,6 +29,13 @@ async function activatePropertyInspector(page: IJupyterLabPageFixture) {
 }
 
 test('should create the two example forms', async ({ page }) => {
+  await page.evaluate(() => {
+    window.galata.on('dialog', (dialog: any | null) => {
+      // Reject any dialogs
+      dialog.reject()
+    });
+  });
+
   page.notebook.createNew('metadata-form');
 
   await activatePropertyInspector(page);
@@ -49,8 +56,8 @@ test('should create the two example forms', async ({ page }) => {
     '.jp-Collapse-contents .jp-MetadataForm fieldset > .form-group'
   );
 
-  await expect(simpleFormGroup).toHaveCount(2);
-  expect(await simpleForm.screenshot()).toMatchSnapshot('simple-form.png');
+  await expect.soft(simpleFormGroup).toHaveCount(2);
+  expect.soft(await simpleForm.screenshot()).toMatchSnapshot('simple-form.png');
 
   // Collapse the simple example form.
   await simpleForm.click();
@@ -64,6 +71,6 @@ test('should create the two example forms', async ({ page }) => {
   );
 
   // Should display 6 fields (the conditional should be there)
-  await expect(advancedFormGroup).toHaveCount(6);
+  await expect.soft(advancedFormGroup).toHaveCount(6);
   expect(await advancedForm.screenshot()).toMatchSnapshot('advanced-form.png');
 });
