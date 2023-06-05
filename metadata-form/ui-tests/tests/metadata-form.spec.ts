@@ -29,13 +29,6 @@ async function activatePropertyInspector(page: IJupyterLabPageFixture) {
 }
 
 test('should create the two example forms', async ({ page }) => {
-  await page.evaluate(() => {
-    window.galata.on('dialog', (dialog: any | null) => {
-      // Reject any dialogs
-      dialog.reject()
-    });
-  });
-
   page.notebook.createNew('metadata-form');
 
   await activatePropertyInspector(page);
