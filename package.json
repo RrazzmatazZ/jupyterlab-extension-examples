@@ -51,6 +51,6 @@
     "prettier": "^2.1.1"
   },
   "resolutions": {
-    "@jupyterlab/rendermime-interfaces": "~3.6.0"
+    "@jupyterlab/rendermime-interfaces": "~3.6.4"
   }
 }

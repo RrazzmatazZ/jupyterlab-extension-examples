@@ -11,6 +11,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   activate: (app: JupyterFrontEnd) => {
     console.log('the JupyterLab main application:', app);
+    console.log('hello world');
   },
 };
 

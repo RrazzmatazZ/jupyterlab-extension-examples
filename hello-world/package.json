@@ -71,5 +71,8 @@
     "extension": true,
     "outputDir": "jupyterlab_examples_hello_world/labextension"
   },
+  "resolutions": {
+    "@jupyterlab/rendermime-interfaces": "^3.0.0 <=3.6.3"
+  },
   "styleModule": "style/index.js"
 }
